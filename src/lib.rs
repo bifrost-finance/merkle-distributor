@@ -8,14 +8,14 @@ use frame_support::{
     sp_runtime::traits::{
         AccountIdConversion, AtLeast32BitUnsigned, Keccak256, One, Saturating, StaticLookup, Zero,
     },
-    sp_std::{
-        collections::btree_set::BTreeSet,
-        convert::{TryFrom, TryInto},
-        vec::Vec,
-    },
     PalletId,
 };
 use frame_system::pallet_prelude::*;
+use sp_std::{
+    collections::btree_set::BTreeSet,
+    convert::{TryFrom, TryInto},
+    vec::Vec,
+};
 use scale_info::TypeInfo;
 use sp_core::{Hasher, H256};
 
@@ -178,7 +178,7 @@ pub mod pallet {
     #[pallet::call]
     impl<T: Config> Pallet<T> {
         #[pallet::call_index(0)]
-        #[pallet::weight(100000000)]
+        #[pallet::weight({100000000})]
         pub fn add_to_create_whitelist(
             origin: OriginFor<T>,
             account: AccountIdOf<T>,
@@ -195,7 +195,7 @@ pub mod pallet {
         }
 
         #[pallet::call_index(1)]
-        #[pallet::weight(100000000)]
+        #[pallet::weight({100000000})]
         pub fn remove_from_create_whitelist(
             origin: OriginFor<T>,
             account: AccountIdOf<T>,
@@ -356,7 +356,7 @@ pub mod pallet {
         }
 
         #[pallet::call_index(5)]
-        #[pallet::weight(1_000_000)]
+        #[pallet::weight({1_000_000})]
         pub fn emergency_withdraw(
             origin: OriginFor<T>,
             merkle_distributor_id: T::MerkleDistributorId,
